@@ -44,7 +44,7 @@
     </div>
 
     <div class="section">
-        <label for="style">卡通風格 / Style:</label>
+        <label for="style">風格 / Style:</label>
         <select id="style">
             <option value="無 / None">無 / None</option>
             <option value="迪士尼風格 / Disney Style">迪士尼風格 / Disney Style</option>
@@ -52,6 +52,40 @@
             <option value="宮崎駿/吉卜力風格 / Miyazaki/Ghibli Style">宮崎駿/吉卜力風格 / Miyazaki/Ghibli Style</option>
             <option value="漫威動畫風格 / Marvel Animation Style">漫威動畫風格 / Marvel Animation Style</option>
             <option value="DC動畫風格 / DC Animation Style">DC動畫風格 / DC Animation Style</option>
+        </select>
+    </div>
+
+    <div class="section">
+        <label for="paintingStyle1">繪畫風格 (1) / Painting Style (1):</label>
+        <select id="paintingStyle1">
+            <option value="無 / None">無 / None</option>
+            <option value="立體主義 / Cubism">立體主義 / Cubism</option>
+            <option value="野獸派 / Fauvism">野獸派 / Fauvism</option>
+            <option value="視覺欺騙法 / Trompe-l'oeil">視覺欺騙法 / Trompe-l'oeil</option>
+            <option value="灰調畫法 / Grisaille">灰調畫法 / Grisaille</option>
+            <option value="拼貼畫法 / Collage">拼貼畫法 / Collage</option>
+            <option value="超現實主義 / Surrealism">超現實主義 / Surrealism</option>
+            <option value="動態藝術 / Kinetic Art">動態藝術 / Kinetic Art</option>
+            <option value="照片寫實主義 / Photorealism">照片寫實主義 / Photorealism</option>
+            <option value="抽象表現主義 / Abstract Expressionism">抽象表現主義 / Abstract Expressionism</option>
+            <option value="光學藝術 / Op Art">光學藝術 / Op Art</option>
+        </select>
+    </div>
+
+    <div class="section">
+        <label for="paintingStyle2">繪畫風格 (2) / Painting Style (2):</label>
+        <select id="paintingStyle2">
+            <option value="無 / None">無 / None</option>
+            <option value="厚塗法 / Impasto Technique">厚塗法 / Impasto Technique</option>
+            <option value="割鱷法 / Sgraffito">割鱷法 / Sgraffito</option>
+            <option value="點彩法 / Pointillism">點彩法 / Pointillism</option>
+            <option value="明暗對比法 / Chiaroscuro">明暗對比法 / Chiaroscuro</option>
+            <option value="明暗法 / Tenebrism">明暗法 / Tenebrism</option>
+            <option value="透明畫法 / Glazing">透明畫法 / Glazing</option>
+            <option value="抹除法 / Scumbling">抹除法 / Scumbling</option>
+            <option value="噴漆藝術 / Spray Paint Art">噴漆藝術 / Spray Paint Art</option>
+            <option value="熱蠟畫法 / Encaustic Painting">熱蠟畫法 / Encaustic Painting</option>
+            <option value="點描法 / Stippling">點描法 / Stippling</option>
         </select>
     </div>
 
@@ -133,21 +167,71 @@
         function generatePrompt() {
             const theme = document.getElementById('theme').value;
             const style = document.getElementById('style').value;
+            const paintingStyle1 = document.getElementById('paintingStyle1').value;
+            const paintingStyle2 = document.getElementById('paintingStyle2').value;
             const texture = document.getElementById('texture').value;
             const perspective = document.getElementById('perspective').value;
             const lighting = document.getElementById('lighting').value;
             const era = document.getElementById('era').value;
             const character = document.getElementById('character').value;
 
-            const chinesePrompt = `主題: ${theme.split(' / ')[0]}, 風格: ${style.split(' / ')[0]}, 材質: ${texture.split(' / ')[0]}, 視覺角度: ${perspective.split(' / ')[0]}, 光線: ${lighting.split(' / ')[0]}, 年代: ${era.split(' / ')[0]}, 腳色: ${character.split(' / ')[0]}`;
-            const englishPrompt = `Theme: ${theme.split(' / ')[1]}, Style: ${style.split(' / ')[1]}, Texture: ${texture.split(' / ')[1]}, Perspective: ${perspective.split(' / ')[1]}, Lighting: ${lighting.split(' / ')[1]}, Era: ${era.split(' / ')[1]}, Character: ${character.split(' / ')[1]}`;
+            let chinesePrompt = '';
+            let englishPrompt = '';
 
-            document.getElementById('output').innerHTML = `
-                <h3>中文提示詞</h3>
-                <p>${chinesePrompt}</p>
-                <h3>English Prompt</h3>
-                <p>${englishPrompt}</p>
-            `;
+            if (theme !== "無 / None") {
+                chinesePrompt += `主題: ${theme.split(' / ')[0]}, `;
+                englishPrompt += `Theme: ${theme.split(' / ')[1]}, `;
+            }
+            if (style !== "無 / None") {
+                chinesePrompt += `風格: ${style.split(' / ')[0]}, `;
+                englishPrompt += `Style: ${style.split(' / ')[1]}, `;
+            }
+            if (paintingStyle1 !== "無 / None") {
+                chinesePrompt += `繪畫風格 (1): ${paintingStyle1.split(' / ')[0]}, `;
+                englishPrompt += `Painting Style (1): ${paintingStyle1.split(' / ')[1]}, `;
+            }
+            if (paintingStyle2 !== "無 / None") {
+                chinesePrompt += `繪畫風格 (2): ${paintingStyle2.split(' / ')[0]}, `;
+                englishPrompt += `Painting Style (2): ${paintingStyle2.split(' / ')[1]}, `;
+            }
+            if (texture !== "無 / None") {
+                chinesePrompt += `材質: ${texture.split(' / ')[0]}, `;
+                englishPrompt += `Texture: ${texture.split(' / ')[1]}, `;
+            }
+            if (perspective !== "無 / None") {
+                chinesePrompt += `視覺角度: ${perspective.split(' / ')[0]}, `;
+                englishPrompt += `Perspective: ${perspective.split(' / ')[1]}, `;
+            }
+            if (lighting !== "無 / None") {
+                chinesePrompt += `光線: ${lighting.split(' / ')[0]}, `;
+                englishPrompt += `Lighting: ${lighting.split(' / ')[1]}, `;
+            }
+            if (era !== "無 / None") {
+                chinesePrompt += `年代: ${era.split(' / ')[0]}, `;
+                englishPrompt += `Era: ${era.split(' / ')[1]}, `;
+            }
+            if (character !== "無 / None") {
+                chinesePrompt += `腳色: ${character.split(' / ')[0]}`;
+                englishPrompt += `Character: ${character.split(' / ')[1]}`;
+            }
+
+            // 移除末尾的逗號和空格
+            chinesePrompt = chinesePrompt.replace(/, $/, '');
+            englishPrompt = englishPrompt.replace(/, $/, '');
+
+            if (chinesePrompt && englishPrompt) {
+                document.getElementById('output').innerHTML = `
+                    <h3>中文提示詞</h3>
+                    <p>${chinesePrompt}</p>
+                    <h3>English Prompt</h3>
+                    <p>${englishPrompt}</p>
+                `;
+            } else {
+                document.getElementById('output').innerHTML = `
+                    <h3>提示詞生成器</h3>
+                    <p>請至少選擇一個有效的選項來生成提示詞。</p>
+                `;
+            }
         }
     </script>
 </body>
