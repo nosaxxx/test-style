@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提示詞生成器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>提示詞生成器</h1>
+
+    <div class="section">
+        <label for="theme">主題 / Theme:</label>
+        <select id="theme">
+            <option value="無 / None">無 / None</option>
+            <option value="自然 / Nature">自然 / Nature</option>
+            <option value="科技 / Technology">科技 / Technology</option>
+            <option value="冒險 / Adventure">冒險 / Adventure</option>
+            <option value="神話 / Mythology">神話 / Mythology</option>
+            <option value="歷史 / History">歷史 / History</option>
+        </select>
+    </div>
+
+    <div class="section">
+        <label for="style">風格 / Style:</label>
+        <select id="style">
+            <option value="無 / None">無 / None</option>
+            <option value="迪士尼風格 / Disney Style">迪士尼風格 / Disney Style</option>
+            <option value="皮克斯風格 / Pixar Style">皮克斯風格 / Pixar Style</option>
+            <option value="宮崎駿/吉卜力風格 / Miyazaki/Ghibli Style">宮崎駿/吉卜力風格 / Miyazaki/Ghibli Style</option>
+            <option value="漫威動畫風格 / Marvel Animation Style">漫威動畫風格 / Marvel Animation Style</option>
+            <option value="DC動畫風格 / DC Animation Style">DC動畫風格 / DC Animation Style</option>
+        </select>
+    </div>
+
+    <div class="section">
+        <label for="paintingStyle1">繪畫風格 (1) / Painting Style (1):</label>
+        <select id="paintingStyle1">
+            <option value="無 / None">無 / None</option>
+            <option value="立體主義 / Cubism">立體主義 / Cubism</option>
+            <option value="野獸派 / Fauvism">野獸派 / Fauvism</option>
+            <option value="視覺欺騙法 / Trompe-l'oeil">視覺欺騙法 / Trompe-l'oeil</option>
+            <option value="灰調畫法 / Grisaille">灰調畫法 / Grisaille</option>
+            <option value="拼貼畫法 / Collage">拼貼畫法 / Collage</option>
+            <option value="超現實主義 / Surrealism">超現實主義 / Surrealism</option>
+            <option value="動態藝術 / Kinetic Art">動態藝術 / Kinetic Art</option>
+            <option value="照片寫實主義 / Photorealism">照片寫實主義 / Photorealism</option>
+            <option value="抽象表現主義 / Abstract Expressionism">抽象表現主義 / Abstract Expressionism</option>
+            <option value="光學藝術 / Op Art">光學藝術 / Op Art</option>
+        </select>
+    </div>
+
+    <div class="section">
+        <label for="paintingStyle2">繪畫風格 (2) / Painting Style (2):</label>
+        <select id="paintingStyle2">
+            <option value="無 / None">無 / None</option>
+            <option value="厚塗法 / Impasto Technique">厚塗法 / Impasto Technique</option>
+            <option value="割鱷法 / Sgraffito">割鱷法 / Sgraffito</option>
+            <option value="點彩法 / Pointillism">點彩法 / Pointillism</option>
+            <option value="明暗對比法 / Chiaroscuro">明暗對比法 / Chiaroscuro</option>
+            <option value="明暗法 / Tenebrism">明暗法 / Tenebrism</option>
+            <option value="透明畫法 / Glazing">透明畫法 / Glazing</option>
+            <option value="抹除法 / Scumbling">抹除法 / Scumbling</option>
+            <option value="噴漆藝術 / Spray Paint Art">噴漆藝術 / Spray Paint Art</option>
+            <option value="熱蠟畫法 / Encaustic Painting">熱蠟畫法 / Encaustic Painting</option>
+            <option value="點描法 / Stippling">點描法 / Stippling</option>
+        </select>
+    </div>
+
+    <div class="section">
+        <label for="texture">材質 / Texture:</label>
+        <select id="texture">
+            <option value="無 / None">無 / None</option>
+            <option value="金屬 / Metal">金屬 / Metal</option>
+            <option value="玻璃 / Glass">玻璃 / Glass</option>
+            <option value="石頭 / Stone">石頭 / Stone</option>
+            <option value="木材 / Wood">木材 / Wood</option>
+            <option value="布料 / Fabric">布料 / Fabric</option>
+            <option value="皮革 / Leather">皮革 / Leather</option>
+            <option value="水 / Water">水 / Water</option>
+            <option value="毛發/羽毛 / Hair/Feather">毛發/羽毛 / Hair/Feather</option>
+            <option value="塑膠 / Plastic">塑膠 / Plastic</option>
+            <option value="霧面/磨砂 / Matte/Frosted">霧面/磨砂 / Matte/Frosted</option>
+        </select>
+    </div>
+
+    <div class="section">
+        <label for="perspective">視覺角度 / Perspective:</label>
+        <select id="perspective">
+            <option value="無 / None">無 / None</option>
+            <option value="鳥瞰視角 / Bird's Eye View">鳥瞰視角 / Bird's Eye View</option>
+            <option value="蛙視視角 / Worm's Eye View">蛙視視角 / Worm's Eye View</option>
+            <option value="正面視角 / Frontal View">正面視角 / Frontal View</option>
+            <option value="側面視角 / Side View">側面視角 / Side View</option>
+            <option value="仰視視角 / Low Angle View">仰視視角 / Low Angle View</option>
+            <option value="俯視視角 / High Angle View">俯視視角 / High Angle View</option>
+            <option value="近景視角 / Close-Up View">近景視角 / Close-Up View</option>
+            <option value="遠景視角 / Long Shot View">遠景視角 / Long Shot View</option>
+            <option value="動態視角 / Motion View">動態視角 / Motion View</option>
+            <option value="魚眼視角 / Fisheye View">魚眼視角 / Fisheye View</option>
+        </select>
+    </div>
+
+    <div class="section">
+        <label for="lighting">光線 / Lighting:</label>
+        <select id="lighting">
+            <option value="無 / None">無 / None</option>
+            <option value="自然光 / Natural Light">自然光 / Natural Light</option>
+            <option value="人造光 / Artificial Light">人造光 / Artificial Light</option>
+            <option value="柔光 / Soft Light">柔光 / Soft Light</option>
+            <option value="硬光 / Hard Light">硬光 / Hard Light</option>
+            <option value="背光 / Back Light">背光 / Back Light</option>
+        </select>
+    </div>
+
+    <div class="section">
+        <label for="era">年代 / Era:</label>
+        <select id="era">
+            <option value="無 / None">無 / None</option>
+            <option value="現代 / Modern">現代 / Modern</option>
+            <option value="古典 / Classical">古典 / Classical</option>
+            <option value="未來 / Futuristic">未來 / Futuristic</option>
+            <option value="復古 / Retro">復古 / Retro</option>
+            <option value="中世紀 / Medieval">中世紀 / Medieval</option>
+        </select>
+    </div>
+
+    <div class="section">
+        <label for="character">腳色 / Character:</label>
+        <select id="character">
+            <option value="無 / None">無 / None</option>
+            <option value="英雄 / Hero">英雄 / Hero</option>
+            <option value="反派 / Villain">反派 / Villain</option>
+            <option value="探險家 / Explorer">探險家 / Explorer</option>
+            <option value="魔法師 / Wizard">魔法師 / Wizard</option>
+            <option value="機器人 / Robot">機器人 / Robot</option>
+        </select>
+    </div>
+
+    <button onclick="generatePrompt()">生成提示詞 / Generate Prompt</button>
+
+    <div id="output"></div>
+
+    <script>
+        function generatePrompt() {
+            const theme = document.getElementById('theme').value;
+            const style = document.getElementById('style').value;
+            const paintingStyle1 = document.getElementById('paintingStyle1').value;
+            const paintingStyle2 = document.getElementById('paintingStyle2').value;
+            const texture = document.getElementById('texture').value;
+            const perspective = document.getElementById('perspective').value;
+            const lighting = document.getElementById('lighting').value;
+            const era = document.getElementById('era').value;
+            const character = document.getElementById('character').value;
+
+            let chinesePrompt = '';
+            let englishPrompt = '';
+
+            if (theme !== "無 / None") {
+                chinesePrompt += `主題: ${theme.split(' / ')[0]}, `;
+                englishPrompt += `Theme: ${theme.split(' / ')[1]}, `;
+            }
+            if (style !== "無 / None") {
+                chinesePrompt += `風格: ${style.split(' / ')[0]}, `;
+                englishPrompt += `Style: ${style.split(' / ')[1]}, `;
+            }
+            if (paintingStyle1 !== "無 / None") {
+                chinesePrompt += `繪畫風格 (1): ${paintingStyle1.split(' / ')[0]}, `;
+                englishPrompt += `Painting Style (1): ${paintingStyle1.split(' / ')[1]}, `;
+            }
+            if (paintingStyle2 !== "無 / None") {
+                chinesePrompt += `繪畫風格 (2): ${paintingStyle2.split(' / ')[0]}, `;
+                englishPrompt += `Painting Style (2): ${paintingStyle2.split(' / ')[1]}, `;
+            }
+            if (texture !== "無 / None") {
+                chinesePrompt += `材質: ${texture.split(' / ')[0]}, `;
+                englishPrompt += `Texture: ${texture.split(' / ')[1]}, `;
+            }
+            if (perspective !== "無 / None") {
+                chinesePrompt += `視覺角度: ${perspective.split(' / ')[0]}, `;
+                englishPrompt += `Perspective: ${perspective.split(' / ')[1]}, `;
+            }
+            if (lighting !== "無 / None") {
+                chinesePrompt += `光線: ${lighting.split(' / ')[0]}, `;
+                englishPrompt += `Lighting: ${lighting.split(' / ')[1]}, `;
+            }
+            if (era !== "無 / None") {
+                chinesePrompt += `年代: ${era.split(' / ')[0]}, `;
+                englishPrompt += `Era: ${era.split(' / ')[1]}, `;
+            }
+            if (character !== "無 / None") {
+                chinesePrompt += `腳色: ${character.split(' / ')[0]}`;
+                englishPrompt += `Character: ${character.split(' / ')[1]}`;
+            }
+
+            // 移除末尾的逗號和空格
+            chinesePrompt = chinesePrompt.replace(/, $/, '');
+            englishPrompt = englishPrompt.replace(/, $/, '');
+
+            if (chinesePrompt && englishPrompt) {
+                document.getElementById('output').innerHTML = `
+                    <h3>中文提示詞</h3>
+                    <p>${chinesePrompt}</p>
+                    <h3>English Prompt</h3>
+                    <p>${englishPrompt}</p>
+                `;
+            } else {
+                document.getElementById('output').innerHTML = `
+                    <h3>提示詞生成器</h3>
+                    <p>請至少選擇一個有效的選項來生成提示詞。</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
